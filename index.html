@@ -1,4 +1,3 @@
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,11 +104,31 @@
         }
         .code-snippet code {
             display: block;
-            width: 100%;
+            width: 85%;
             white-space: pre-wrap;      /* Ensures code wraps */
             overflow-wrap: break-word;  /* Ensures long words break */
             word-break: break-word;     /* Ensures words break as needed */
         }
+		.bottom-navbar {
+			display: flex;
+			justify-content: space-around;
+			padding: 1rem;
+			border-top: 1px solid #000000;
+			margin-top: 1rem;
+		}
+
+		.bottom-navbar a {
+			color: #000000;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 1rem;
+			padding: 0.5rem 1rem;
+			transition: color 0.3s;
+		}
+
+		.bottom-navbar a:hover {
+			color: #000080; /* Change color on hover */
+		}
 
         /* Responsive Styles */
         @media (max-width: 600px) {
@@ -144,14 +163,9 @@
         <img src="https://www.atrixnet.com/img/corporate-bs.png" alt="Corporate BS Generator" class="header-image" loading="lazy">
         <h2>Corporate BS Generator</h2>
         <div class="code-snippet">
-            <code>
-# Instructions for using the Corporate BS Generator
+            <code># Instructions for using the Corporate BS Generator
 
 def generate_instructions():
-    purpose = """
-    For the ambitious business professional looking to get ahead in the industry.
-    Dazzle all the execs at your next business meeting...
-    """
 
     steps = [
         "Click the button below",
@@ -164,8 +178,7 @@ def generate_instructions():
     for i, step in enumerate(steps, start=1):
         print(f"Step {i}: {step}")
 
-generate_instructions()
-            </code>
+generate_instructions()</code>
         </div>
         <button onclick="generateBS()" aria-label="Generate Corporate BS Phrase">Generate BS</button>
         
@@ -176,8 +189,13 @@ generate_instructions()
             <button id="tweetButton" onclick="tweetBS()" aria-label="Tweet This Corporate BS Phrase">Tweet This BS</button>
         </div>
 		
-		<a class="twitter-timeline" href="https://twitter.com/AiDeployer?ref_src=twsrc%5Etfw">Tweets by AiDeployer</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-		
+		<div class="bottom-navbar">
+			<a href="#link1">Link 1</a>
+			<a href="#link2">Link 2</a>
+			<a href="#link3">Link 3</a>
+			<a href="#link4">Link 4</a>
+		</div>
+
     </div>
     <script>
         const adverbs = [
