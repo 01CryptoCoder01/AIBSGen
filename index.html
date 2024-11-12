@@ -1,0 +1,310 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate BS Generator</title>
+    <style>
+        /* Global Box-Sizing */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'MS Sans Serif', sans-serif;
+            background: url('https://i.imgur.com/hKOGoex.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-color: #f0f0f0; /* Fallback color */
+            color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Aligns container to the top */
+            min-height: 100vh; /* Allows content to extend beyond viewport if needed */
+            margin: 0;
+            padding: 1rem; /* Added padding for small screens */
+            overflow-y: auto; /* Enables vertical scrolling if necessary */
+        }
+        .container {
+            background: #ffffff;
+            padding: 2rem;
+            border: 2px solid #000000;
+            box-shadow: 5px 5px #888888;
+            text-align: center;
+            width: 90%; /* Adjusted for better fit on smaller screens */
+            max-width: 800px;
+            height: auto; /* Allows container to expand based on content */
+        }
+        .header-image {
+            width: 100%;
+            height: auto; /* Ensures image scales proportionally */
+            border-bottom: 2px solid #000000;
+            margin-bottom: 1.25rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin: 0;
+            padding: 1rem 0;
+            background: #000080;
+            color: #ffffff;
+        }
+        button {
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            margin: 0.625rem 0.3125rem; /* Added horizontal margin for spacing */
+            cursor: pointer;
+            background-color: #d3d3d3;
+            color: #000000;
+            border: 2px outset #ffffff;
+            transition: background-color 0.3s;
+            border-radius: 5px; /* Adds slight rounding for better touch experience */
+        }
+        button:hover {
+            background-color: #a9a9a9;
+        }
+        .output {
+            margin-top: 1.25rem;
+            font-size: 1.125rem;
+            font-weight: bold;
+            overflow-wrap: break-word; /* Ensures long phrases wrap appropriately */
+            word-break: break-word;    /* Allows breaking within words if necessary */
+            white-space: normal;       /* Ensures normal white-space handling */
+        }
+        table {
+            margin: 1.25rem auto;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid #000000;
+            padding: 0.625rem;
+        }
+        th {
+            background-color: #000080;
+            color: #ffffff;
+        }
+        .result-container {
+            margin-top: 1.25rem;
+            background: #f0f0f0;
+            padding: 1.25rem;
+            border: 2px solid #000000;
+            box-shadow: 3px 3px #888888;
+        }
+        .code-snippet {
+            background: #f4f4f4;
+            padding: 0.9375rem;
+            border: 1px solid #000000;
+            margin: 1.25rem 0;
+            text-align: left;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            white-space: pre-wrap;      /* Allows text to wrap */
+            overflow-wrap: break-word;  /* Ensures long words break */
+            word-break: break-word;     /* Ensures words break as needed */
+            max-height: none;           /* Removes height restriction */
+            overflow: visible;          /* Ensures no overflow is hidden */
+        }
+        .code-snippet code {
+            display: block;
+            width: 100%;
+            white-space: pre-wrap;      /* Ensures code wraps */
+            overflow-wrap: break-word;  /* Ensures long words break */
+            word-break: break-word;     /* Ensures words break as needed */
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+                width: 95%; /* Further increase width for very small screens */
+            }
+
+            h2 {
+                font-size: 1.25rem;
+                padding: 0.75rem 0;
+            }
+
+            button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .output {
+                font-size: 1rem;
+            }
+
+            .code-snippet {
+                font-size: 0.875rem;
+                max-height: none; /* Ensures no height restriction on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://www.atrixnet.com/img/corporate-bs.png" alt="Corporate BS Generator" class="header-image" loading="lazy">
+        <h2>Corporate BS Generator</h2>
+        <div class="code-snippet">
+            <code>
+# Instructions for using the Corporate BS Generator
+
+def generate_instructions():
+    purpose = """
+    For the ambitious business professional looking to get ahead in the industry.
+    Dazzle all the execs at your next business meeting...
+    """
+
+    steps = [
+        "Click the button below",
+        "Random corporate bullshit statement appears in text field",
+        "Repeat as required ad nauseam"
+    ]
+
+    print(purpose)
+    print("Create your own corporate B.S. catch phrase!")
+    for i, step in enumerate(steps, start=1):
+        print(f"Step {i}: {step}")
+
+generate_instructions()
+            </code>
+        </div>
+        <button onclick="generateBS()" aria-label="Generate Corporate BS Phrase">Generate BS</button>
+        
+        <div class="result-container">
+            <div class="output" id="output"></div>
+        </div>
+        <div>
+            <button id="tweetButton" onclick="tweetBS()" aria-label="Tweet This Corporate BS Phrase">Tweet This BS</button>
+        </div>
+		
+		<a class="twitter-timeline" href="https://twitter.com/AiDeployer?ref_src=twsrc%5Etfw">Tweets by AiDeployer</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		
+    </div>
+    <script>
+        const adverbs = [
+            "Strategically", "Quickly", "Proactively", "Collaboratively", "Efficiently",
+            "appropriately", "assertively", "authoritatively", "compellingly", "competently",
+            "completely", "continually", "conveniently", "credibly", "distinctively",
+            "dramatically", "dynamically", "energistically", "enthusiastically", "fungibly",
+            "globally", "holisticly", "interactively", "intrinsically", "monotonectally",
+            "objectively", "phosfluorescently", "professionally", "progressively",
+            "rapidiously", "seamlessly", "synergistically", "uniquely"
+        ];
+
+        const adjectives = [
+            "24/7", "24/365", "accurate", "adaptive", "agile", "alternative",
+            "an expanded array of", "B2B", "B2C", "backend", "backward-compatible",
+            "best-of-breed", "bleeding-edge", "bricks-and-clicks", "business",
+            "clicks-and-mortar", "client-based", "client-centered", "client-centric",
+            "client-focused", "cloud-based", "cloud-centric", "cloudified",
+            "collaborative", "compelling", "competitive", "cooperative", "corporate",
+            "cost effective", "covalent", "cross functional", "cross-media",
+            "cross-platform", "cross-unit", "customer directed", "customized",
+            "cutting-edge", "distinctive", "distributed", "diverse", "dynamic",
+            "e-business", "economically sound", "effective", "efficient", "elastic",
+            "emerging", "empowered", "enabled", "end-to-end", "enterprise",
+            "enterprise-wide", "equity invested", "error-free", "ethical",
+            "excellent", "exceptional", "extensible", "extensive", "flexible",
+            "focused", "frictionless", "front-end", "fully researched",
+            "fully tested", "functional", "functionalized", "fungible",
+            "future-proof", "global", "go forward", "goal-oriented", "granular",
+            "high standards in", "high-payoff", "hyperscale", "high-quality",
+            "highly efficient", "holistic", "impactful", "inexpensive", "innovative",
+            "installed base", "integrated", "interactive", "interdependent",
+            "intermandated", "interoperable", "intuitive", "just in time",
+            "leading-edge", "leveraged", "long-term high-impact",
+            "low-risk high-yield", "magnetic", "maintainable", "market positioning",
+            "market-driven", "mission-critical", "multidisciplinary",
+            "multifunctional", "multimedia based", "next-generation", "on-demand",
+            "one-to-one", "open-source", "optimal", "orthogonal", "out-of-the-box",
+            "pandemic", "parallel", "performance based", "plug-and-play",
+            "premier", "premium", "principle-centered", "proactive", "process-centric",
+            "professional", "progressive", "prospective", "quality", "real-time",
+            "reliable", "resource-sucking", "resource-maximizing",
+            "resource-leveling", "revolutionary", "robust", "scalable",
+            "seamless", "stand-alone", "standardized", "standards compliant",
+            "state of the art", "sticky", "strategic", "superior", "sustainable",
+            "synergistic", "tactical", "team building", "team driven",
+            "technically sound", "timely", "top-line", "transparent", "turnkey",
+            "ubiquitous", "unique", "user-centric", "user friendly", "value-added",
+            "vertical", "viral", "virtual", "visionary", "web-enabled", "wireless",
+            "world-class", "worldwide"
+        ];
+
+        const verbs = [
+            "leverage", "streamline", "optimize", "facilitate", "empower",
+            "actualize", "administrate", "aggregate", "architect", "benchmark",
+            "brand", "build", "cloudify", "communicate", "conceptualize",
+            "coordinate", "create", "cultivate", "customize", "deliver",
+            "deploy", "develop", "dinintermediate", "disseminate", "drive",
+            "embrace", "e-enable", "enable", "engage", "engineer",
+            "enhance", "envisioneer", "evisculate", "evolve", "expedite",
+            "exploit", "extend", "fabricate", "fashion", "formulate",
+            "foster", "generate", "grow", "harness", "impact",
+            "implement", "incentivize", "incept", "incubate", "initiate",
+            "innovate", "integrate", "iterate", "leverage existing",
+            "leverage other's", "maintain", "matrix", "maximize",
+            "mesh", "monetize", "morph", "myocardinate", "negotiate",
+            "network", "optimize", "onboard", "orchestrate", "parallel task",
+            "plagiarize", "pontificate", "predominate", "procrastinate",
+            "productivate", "productize", "promote", "provide access to",
+            "pursue", "recaptiualize", "reconceptualize", "redefine",
+            "re-engineer", "reintermediate", "reinvent", "repurpose",
+            "restore", "revolutionize", "right-shore", "scale", "seize",
+            "simplify", "strategize", "streamline", "supply", "syndicate",
+            "synergize", "synthesize", "target", "transform", "transition",
+            "underwhelm", "unleash", "utilize", "visualize", "whiteboard"
+        ];
+
+        const nouns = [
+            "frameworks", "paradigms", "solutions", "infrastructures", "networks",
+            "action items", "adoption", "alignments", "applications", "architectures",
+            "bandwidth", "benefits", "best practices", "catalysts for change",
+            "channels", "clouds", "collaboration and idea-sharing", "communities",
+            "content", "convergence", "core competencies", "customer service",
+            "data", "deliverables", "e-business", "e-commerce", "e-markets",
+            "e-tailers", "e-services", "experiences", "expertise", "functionalities",
+            "fungibility", "growth strategies", "human capital", "ideas",
+            "imperatives", "infomediaries", "information", "infrastructures",
+            "initiatives", "innovation", "intellectual capital", "interfaces",
+            "internal or \"organic\" sources", "leadership", "leadership skills",
+            "manufactured products", "markets", "materials", "meta-services",
+            "methodologies", "methods of empowerment", "metrics", "mindshare",
+            "models", "networks", "niches", "niche markets", "nosql",
+            "opportunities", "\"outside the box\" thinking", "outsourcing",
+            "paradigms", "partnerships", "platforms", "portals", "potentialities",
+            "process improvements", "processes", "products", "quality vectors",
+            "relationships", "resources", "results", "ROI", "scenarios",
+            "schemas", "scrums", "services", "solutions", "sources", "sprints",
+            "strategic theme areas", "storage", "supply chains", "synergy",
+            "systems", "technologies", "technology", "testing procedures",
+            "total linkage", "users", "value", "vortals", "web-readiness",
+            "web services", "wins", "virtualization"
+        ];
+
+        function initializeTable() {
+            document.getElementById('adverb').innerText = adverbs.join(', ');
+            document.getElementById('adjective').innerText = adjectives.join(', ');
+            document.getElementById('verb').innerText = verbs.join(', ');
+            document.getElementById('noun').innerText = nouns.join(', ');
+        }
+
+        function generateBS() {
+            const adverb = adverbs[Math.floor(Math.random() * adverbs.length)];
+            const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+            const verb = verbs[Math.floor(Math.random() * verbs.length)];
+            const noun = nouns[Math.floor(Math.random() * nouns.length)];
+
+            const phrase = `${adverb} ${verb} ${adjective} ${noun}`;
+            document.getElementById('output').innerText = phrase;
+        }
+
+        function tweetBS() {
+            const phrase = document.getElementById('output').innerText;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(phrase)}&url=https://twitter.com/yourtwitterhandle`;
+            window.open(twitterUrl, '_blank');
+        }
+
+        // Initialize table with default values on load
+        window.onload = initializeTable;
+    </script>
+</body>
